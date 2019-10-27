@@ -63,7 +63,9 @@ const App = () => {
     event.preventDefault()
     const personWithSameName = persons.find(p => p.name === newName)
     if (personWithSameName !== undefined) {
-      if (window.confirm(`${newName} is already added to the phonebook, replace the old number with the new one?`)) {
+      const confirmUpdate = 
+        window.confirm(`${newName} is already added to the phonebook, replace the old number with the new one?`)
+      if (confirmUpdate) {
         const newPerson = { name: newName, number: newNumber }
         personsService
           .update(personWithSameName.id, newPerson)
