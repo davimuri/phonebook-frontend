@@ -90,7 +90,8 @@ const App = () => {
           sendNotification({ message: `${createdPerson.name} was added`, type: 'info'})
         })
         .catch(error => {
-          sendNotification({ message: `Error: ${newPerson.name} couldn't be added`, type: 'error'})
+          const errorMsg = error.response.data.error || `${newName} couldn't be added`
+          sendNotification({ message: errorMsg, type: 'error'})
         })
     }
   }
